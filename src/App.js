@@ -1,8 +1,15 @@
 import "./App.css";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+
+
 
 import React, { useState } from "react";
-import Cart from "./components/Cart.jsx";
 import { useCart } from "./Context/ContextProvider.jsx";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+
+import Cart from "./components/Cart.jsx";
+import About from "./components/About.jsx";
 
 const Product = ({ product }) => {
   const { addToCart } = useCart();
@@ -67,17 +74,29 @@ function App() {
     },
   ];
   return (
-    <>
-      <button onClick={toggleCartModal}>
-        Cart ({cartItems.reduce((acc, item) => acc + item.quantity, 0)})
-      </button>
+    <Router>
+      <Navbar bg="dark" data-bs-theme="dark">
+        <Container>
+        <NavLink to="/" exact variant="underline">HOME</NavLink>
+        <NavLink to="/about">ABOUT</NavLink>
+        <button onClick={toggleCartModal}>
+          Cart ({cartItems.reduce((acc, item) => acc + item.quantity, 0)})
+        </button>
+        </Container>
+      </Navbar>
       {isOpen && <Cart onClose={toggleCartModal} />}
-      <div className="App">
-      {productsArr.map(product => (
-          <Product key={product.title} product={product} />
-        ))}
-      </div>
-    </>
+      
+      <Routes>
+        <Route path="/" element={
+          <div className="App">
+            {productsArr.map(product => (
+            <Product key={product.title} product={product} />
+            ))}
+          </div>
+        } />
+         <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
 }
 
