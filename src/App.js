@@ -1,6 +1,14 @@
 import "./App.css";
 
+import React, { useState } from "react";
+import Cart from "./components/Cart";
+
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleCartModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   const productsArr = [
     {
@@ -40,15 +48,19 @@ function App() {
     },
   ];
   return (
-    <div className="App">
-      {productsArr.map((product, index) => (
-        <div key = {index}>
-          <h3>{product.title}</h3>
-          <img src={product.imageUrl}/>
-          <p>{product.price}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <button onClick={toggleCartModal}>Cart</button>
+      {isOpen && <Cart onClose={toggleCartModal}/>}
+      <div className="App">
+        {productsArr.map((product, index) => (
+          <div key={index}>
+            <h3>{product.title}</h3>
+            <img src={product.imageUrl}  alt={product.title}/>
+            <p>{product.price}</p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
