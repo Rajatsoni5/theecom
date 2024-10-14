@@ -1,10 +1,29 @@
 import "./App.css";
 
 import React, { useState } from "react";
-import Cart from "./components/Cart";
+import Cart from "./components/Cart.jsx";
+import { useCart } from "./Context/ContextProvider.jsx";
+
+const Product = ({ product }) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({ ...product, quantity: 1 });
+  };
+
+  return (
+    <div key={product.title}>
+      <h3>{product.title}</h3>
+      <img src={product.imageUrl} alt={product.title} />
+      <p>${product.price}</p>
+      <button onClick={handleAddToCart}>Add to Cart</button>
+    </div>
+  );
+};
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const { cartItems } = useCart();
 
   const toggleCartModal = () => {
     setIsOpen(!isOpen);
@@ -49,15 +68,13 @@ function App() {
   ];
   return (
     <>
-      <button onClick={toggleCartModal}>Cart</button>
-      {isOpen && <Cart onClose={toggleCartModal}/>}
+      <button onClick={toggleCartModal}>
+        Cart ({cartItems.reduce((acc, item) => acc + item.quantity, 0)})
+      </button>
+      {isOpen && <Cart onClose={toggleCartModal} />}
       <div className="App">
-        {productsArr.map((product, index) => (
-          <div key={index}>
-            <h3>{product.title}</h3>
-            <img src={product.imageUrl}  alt={product.title}/>
-            <p>{product.price}</p>
-          </div>
+      {productsArr.map(product => (
+          <Product key={product.title} product={product} />
         ))}
       </div>
     </>
