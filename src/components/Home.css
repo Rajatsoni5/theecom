@@ -25,14 +25,10 @@
 .tour_box h3 {
     font-style: italic;
     padding-top: 2%;
-    padding-bottom: 2%;
 }
 .tour_container{
-    display: flex;
-    gap: 60px;
     font-size: 15px;
-    padding: 0% 0% 1% 35%;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin: 10px;
+    margin: 0% 10%;
+
 
 }

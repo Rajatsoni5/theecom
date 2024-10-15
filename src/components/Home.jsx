@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Home.css";
 import Button from 'react-bootstrap/Button';
+import Table from "react-bootstrap/Table";
 
 import Play from "../Assets/play_image.jpeg"
 function Home() {
@@ -39,11 +40,16 @@ function Home() {
         <h3>TOURS</h3>
         {TourData.map((tour,index) => (
             <div key={index} className='tour_container'>
-                <p>{tour.date}</p>
-                <p>{tour.area}</p>
-                <p>{tour.location}</p>
-                <Button variant="primary">BUY TICKETS</Button>
-                <hr/>
+                <Table striped bordered hover>
+                <tbody>
+                    <tr>
+                    <td>{tour.date}</td>
+                    <td>{tour.area}</td>
+                    <td>{tour.location}</td>
+                    <td><Button variant="primary">BUY TICKETS</Button></td>
+                    </tr>
+                </tbody>
+                </Table>
             </div>
         ))}
     </div>
