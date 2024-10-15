@@ -8,6 +8,7 @@ import Cart from "./components/Cart.jsx";
 import Home from "./components/Home";
 import Store from "./components/Store";
 import About from "./components/About";
+import ContactUs from "./components/ContactUs.jsx";
 
 
 function App() {
@@ -23,8 +24,9 @@ function App() {
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
         <NavLink to="/" exact variant="underline">HOME</NavLink>
-        <NavLink to="/about">ABOUT</NavLink>
         <NavLink to="/store">STORE</NavLink>
+        <NavLink to="/about">ABOUT</NavLink>
+        <NavLink to="/contact">CONTACT US</NavLink>
         <button onClick={toggleCartModal}>
           Cart ({cartItems.reduce((acc, item) => acc + item.quantity, 0)})
         </button>
@@ -35,6 +37,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/store" element={<Store />} />
+        <Route path="/contact" element={<ContactUs />} />
       </Routes>
     </Router>
   );
