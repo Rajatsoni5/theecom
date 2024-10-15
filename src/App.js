@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Store from "./components/Store";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs.jsx";
+import ProductDetail from "./components/ProductDetail.jsx";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/store" element={<Store />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/Product/:productId" element={<ProductDetail />} />
       </Routes>
     </Router>
   );
