@@ -24,7 +24,7 @@ function App() {
     <Router>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-        <NavLink to="/" exact variant="underline">HOME</NavLink>
+        <NavLink to="/" >HOME</NavLink>
         <NavLink to="/store">STORE</NavLink>
         <NavLink to="/about">ABOUT</NavLink>
         <NavLink to="/contact">CONTACT US</NavLink>
