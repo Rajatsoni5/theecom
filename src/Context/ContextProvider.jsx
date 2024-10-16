@@ -29,6 +29,28 @@ const initialProducts = [
   },
 ];
 
+const TourData = [
+  {date: "JUL 16",
+      area : "DETROIT, MI",
+      location : "DTE ENERGY MUSIC THEATRE"
+  },
+  {date: "JUL 19",
+      area : "TORONTO, ON",
+      location : "BUDWEISER STAGE"
+  },
+  {date: "JUL 22",
+      area : "BRISTOW, VA",
+      location : "JIGGY LUBE LIVE"
+  },
+  {date: "JUL 29",
+      area : "PHOENIX, AZ",
+      location : "AK-CHIN PAVILION"
+  },
+  {date: "AUG 02",
+      area : "LAS VEGAS, NV",
+      location : "T-MOBILE ARENA"
+  }
+]
 export const Provider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   
@@ -46,7 +68,11 @@ export const Provider = ({ children }) => {
   };
 
   return (
-    <Context.Provider value={{ cartItems, addToCart, products: initialProducts }}>
+    <Context.Provider value={{ 
+      cartItems, addToCart, 
+      products: initialProducts,
+      TourData: TourData 
+      }}>
       {children}
     </Context.Provider>
   );

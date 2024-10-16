@@ -4,29 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Table from "react-bootstrap/Table";
 
 import Play from "../Assets/play_image.jpeg"
+import { useCart } from '../Context/ContextProvider';
 function Home() {
-    const TourData = [
-        {date: "JUL 16",
-            area : "DETROIT, MI",
-            location : "DTE ENERGY MUSIC THEATRE"
-        },
-        {date: "JUL 19",
-            area : "TORONTO, ON",
-            location : "BUDWEISER STAGE"
-        },
-        {date: "JUL 22",
-            area : "BRISTOW, VA",
-            location : "JIGGY LUBE LIVE"
-        },
-        {date: "JUL 29",
-            area : "PHOENIX, AZ",
-            location : "AK-CHIN PAVILION"
-        },
-        {date: "AUG 02",
-            area : "LAS VEGAS, NV",
-            location : "T-MOBILE ARENA"
-        }
-    ]
+    const {TourData} = useCart()
+    console.log(TourData)
   return (
    <>
      <div className="home_topbox">
